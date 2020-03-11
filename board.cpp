@@ -3,7 +3,8 @@
 #include <fstream>
 #include <cmath>
 
-Board::Board(int size_) : size{size_} {
+Board::Board(int size_) {
+    	size = size_;
 	board.resize(size_);
 	for(int i = 0; i < size_; ++i) {
 		board[i].resize(size_);
@@ -18,6 +19,18 @@ void Board::printBoard() {
 		}
 		// std::cout << "\n";
 	}
+	std::cout << "\n";
+}
+
+void Board::printOutput() {
+	for(int i = 0; i < size; ++i) {
+		for(int j = 0; j < size; ++j) {
+			if(j == getSize()-1) std::cout << "| " << output_board[i][j] << " |\n";
+			else std::cout << "| " << output_board[i][j] << " ";
+		}
+		// std::cout << "\n";
+	}
+	std::cout << "\n";
 }
 
 int Board::getSize() {
@@ -38,36 +51,58 @@ void Board::readBoard(std::ifstream& is) {
 	}
 }
 
+int count = 0;
 void Board::solve() {
+	for(int i = 0; i < size; i++) {
+		for(int j = 0; j < size; j++) {
+			if(board[i][j] == 0) {
+			for(int k = 1; k <= 9; k++) {
+				if(findMove(i, j, k)) {
+				board[i][j] = k;
+				solve();
+				board[i][j] = 0;
+				}
+			}
+			//* board not valid
+			return;
+			}
+		}
+    }
+    // std::cout << "NICE\n";
+	copyBoard();
+    return;
+}
+
+void Board::copyBoard() {
+	//* set up output board for copy
+	output_board.resize(size);
+	for(size_t i = 0; i < output_board.size(); ++i) {
+		output_board[i].resize(size);
+	}
+	//* copy values from board to output
 	for(int i = 0; i < size; ++i) {
 		for(int j = 0; j < size; ++j) {
-			if(board[i][j] == 0) {
-				for(int k = 1; k <= size; ++k) {
-					if(findMove(i, j, k)) {
-						board[i][j] = k;
-						solve();
-						board[i][j] = 0;
-					}
-				}
-				return;
-			}
+			output_board[i][j] = board[i][j];
 		}
 	}
 }
 
 bool Board::findMove(int row, int col, int k) {
+	// if the row has k already return false	
 	for(int i = 0; i < size; ++i) {
 		if(board[row][i] == k) return false;
 	}
+	// if the col has k already return false
 	for(int i = 0; i < size; ++i) {
 		if(board[i][col] == k) return false;
 	}
 	//* change the row and col to start at the beginning of each square
-	row = (row/3) * 3;
-	col = (col/3) * 3;
+	int trow = (row/3) * 3;
+	int tcol = (col/3) * 3;
+	// if the current square already has k then return false
 	for(int i = 0; i < 3; ++i) {
 		for(int j = 0; j < 3; ++j) {
-			if(board[row+i][col+j] == k) return false;
+			if(board[trow+i][tcol+j] == k) return false;
 		}
 	}
 	return true;

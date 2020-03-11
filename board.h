@@ -7,12 +7,15 @@
 class Board {
 public:
 	std::vector<std::vector<int>> board;
+	std::vector<std::vector<int>> output_board;
 	int size;
 	int remaining_squares = 0;
 
 	Board(int size);
 
 	void printBoard();
+
+	void printOutput();
 
 	int getSize();
 
@@ -23,5 +26,7 @@ public:
 	bool findMove(int row, int col, int k);
 
 	void readBoard(std::ifstream& is);
+
+	void copyBoard();
 };
 #endif
