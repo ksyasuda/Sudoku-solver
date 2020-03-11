@@ -65,6 +65,9 @@ void Board::solve() {
 			for(int k = 1; k <= 9; k++) {
 				if(findMove(i, j, k)) {
 				board[i][j] = k;
+				#ifdef DEBUG
+				printBoard();
+				#endif
 				solve();
 				board[i][j] = 0;
 				}
