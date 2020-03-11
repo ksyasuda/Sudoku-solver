@@ -1,7 +1,7 @@
 #include <iostream>
-#include "board.h"
 #include <fstream>
 #include <cmath>
+#include "../headers/board.h"
 
 Board::Board(int size_) {
     	size = size_;
@@ -43,11 +43,17 @@ void Board::setBoard(int x, int y, int n) {
 
 void Board::readBoard(std::ifstream& is) {
 	int num;
+	int count=0;
 	for(int i = 0; i < size; ++i) {
 		for(int j = 0; j < size; ++j) {
 			is >> num;
 			board[i][j] = num;
+			++count;
 		}
+	}
+	if(count != size*size) {
+		std::cerr << "Must input a valid board\n";
+		exit(1);
 	}
 }
 
