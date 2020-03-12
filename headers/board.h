@@ -10,6 +10,7 @@ public:
 	std::vector<std::vector<int>> output_board;
 	int size;
 	int remaining_squares = 0;
+	int count = 0;
 
 	Board(int size);
 

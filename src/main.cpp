@@ -21,6 +21,9 @@ int main(int argc, char* argv[]) {
 	int size = atoi(argv[1]);
 	Board board(size);
 	board.readBoard(is);
+	std::cout << "            Input board\n";
+	board.printBoard();
+	std::cout << "            Solved board\n";
 	board.solve();
 	// board.printBoard();
 	board.printOutput();
