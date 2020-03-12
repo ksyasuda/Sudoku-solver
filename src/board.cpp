@@ -26,7 +26,7 @@ void Board::printBoard() {
 
 void Board::printOutput() {
 #ifdef DEBUG
-	std::cout << count << " recursive calls\n";
+	std::cout << count << " numbers tried\n";
 #endif
 	std::cout << "-------------------------------------\n";
 	for(int i = 0; i < size; ++i) {
@@ -65,26 +65,29 @@ void Board::readBoard(std::ifstream& is) {
 }
 
 void Board::solve() {
+	if(solved) return;
 	for(int i = 0; i < size; i++) {
 		for(int j = 0; j < size; j++) {
 			if(board[i][j] == 0) {
-			for(int k = 1; k <= 9; k++) {
-				if(findMove(i, j, k)) {
-				board[i][j] = k;
-				#ifdef DEBUG
-				++count;
-				printBoard();
-				#endif
-				solve();
-				board[i][j] = 0;
+				for(int k = 1; k <= 9; k++) {
+					if(findMove(i, j, k)) {
+					board[i][j] = k;
+					#ifdef DEBUG
+					++count;
+					printBoard();
+					#endif
+					solve();
+					if(solved) return;
+					board[i][j] = 0;
+					}
 				}
-			}
 			//* board not valid
 			return;
 			}
 		}
     }
     // std::cout << "NICE\n";
+	solved = true;
 	copyBoard();
     return;
 }

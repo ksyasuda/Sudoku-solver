@@ -11,6 +11,7 @@ public:
 	int size;
 	int remaining_squares = 0;
 	int count = 0;
+	bool solved = false;
 
 	Board(int size);
 
