@@ -23,12 +23,14 @@ void Board::printBoard() {
 }
 
 void Board::printOutput() {
+	std::cout << "-------------------------------------\n";
 	for(int i = 0; i < size; ++i) {
 		for(int j = 0; j < size; ++j) {
 			if(j == getSize()-1) std::cout << "| " << output_board[i][j] << " |\n";
 			else std::cout << "| " << output_board[i][j] << " ";
 		}
 		// std::cout << "\n";
+		std::cout << "-------------------------------------\n";
 	}
 	std::cout << "\n";
 }
