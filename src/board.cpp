@@ -93,6 +93,15 @@ void Board::printOutput() {
 	std::cout << colors[1] << "-------------";
 	std::cout << colors[2] << "-------------\n";
 	for(int i = 0; i < size; ++i) {
+		if(i == 3) {
+        	std::cout << colors[3] << "-------------";
+        	std::cout << colors[4] << "-------------";
+        	std::cout << colors[5] << "-------------\n";
+        } else if(i == 6) {
+        	std::cout << colors[6] << "-------------";
+        	std::cout << colors[7] << "-------------";
+        	std::cout << colors[8] << "-------------\n";
+		}
 		for(int j = 0; j < size; ++j) {
 			if(i >= 0 && i <=2 && j >= 0 && j <=2) {
 				if(j == 2) std::cout << colors[0] << "| " << colors[9] <<
@@ -158,11 +167,8 @@ void Board::printOutput() {
 			std::cout << colors[7] << "-------------";
         	std::cout << colors[8] << "-------------\n";
 		}
-
-
-
 	}
-	std::cout << "\n";
+	//std::cout << "\n";
 }
 
 int Board::getSize() {
