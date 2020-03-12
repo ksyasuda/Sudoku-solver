@@ -10,6 +10,7 @@ solver: src/main.cpp headers/board.h src/board.cpp
 debug: src/main.cpp headers/board.h src/board.cpp
 	$(CXX) $(DEBUG) $^ -o solver_$@
 
+all: solver debug
 
 .SUFFIXES:
 
