@@ -86,7 +86,7 @@ void Board::printBoard() {
 
 void Board::printOutput() {
 #ifdef DEBUG
-	std::cout << count << " numbers tried\n";
+	std::cout << colors[6] << count << " numbers tried\n";
 #endif
 	//std::cout << "---------------------------------------\n";
 	std::cout << colors[0] << "-------------";
