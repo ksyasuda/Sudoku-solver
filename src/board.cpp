@@ -32,7 +32,7 @@ void Board::printOutput() {
 	//std::cout << "---------------------------------------\n";
 	std::cout << colors[0] << "-------------";
 	std::cout << colors[1] << "-------------";
-	std::cout << colors[2] << "------------\n";
+	std::cout << colors[2] << "-------------\n";
 	for(int i = 0; i < size; ++i) {
 		for(int j = 0; j < size; ++j) {
 			if(i >= 0 && i <=2 && j >= 0 && j <=2) {
@@ -89,15 +89,15 @@ void Board::printOutput() {
 		if(i < 3) {
 			std::cout << colors[0] << "-------------";
 			std::cout << colors[1] << "-------------";
-			std::cout << colors[2] << "------------\n";
+			std::cout << colors[2] << "-------------\n";
 		} else if(i >=3 && i <6) {
 			std::cout << colors[3] << "-------------";
 			std::cout << colors[4] << "-------------";
-			std::cout << colors[5] << "------------\n";
+			std::cout << colors[5] << "-------------\n";
 		} else if(i >= 6 && i <= 8) {
 			std::cout << colors[6] << "-------------";
 			std::cout << colors[7] << "-------------";
-        	std::cout << colors[8] << "------------\n";
+        	std::cout << colors[8] << "-------------\n";
 		}
 
 
