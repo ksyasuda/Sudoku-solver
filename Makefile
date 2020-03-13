@@ -4,15 +4,21 @@ CXXFLAGS = -std=c++1z -Wconversion -Wall -Werror -Wextra -pedantic -DNDEBUG -O3
 
 DEBUG = -std=c++1z -Wconversion -Wall -Werror -Wextra -pedantic -DDEBUG -g3
 	
-solver: src/main.cpp headers/board.h src/board.cpp
-	$(CXX) $(CXXFLAGS) $^ -o $@
-
-debug: src/main.cpp headers/board.h src/board.cpp
-	$(CXX) $(DEBUG) $^ -o solver_$@
-
 all: solver debug
 
-.SUFFIXES:
+BIN = solver
+
+HEADERS = $(shell find headers -name *.h)
+
+SRCS = $(shell find src -name *.cpp)
+
+all: $(BIN) debug
+
+$(BIN): $(HEADERS) $(SRCS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+debug: $(HEADERS) $(SRCS)
+	$(CXX) $(DEBUG) $^ -o $(BIN)_$@
 
 .PHONY: clean all
 clean:
