@@ -18,7 +18,6 @@ $(BIN): $(HEADERS) $(SRCS)
 debug: $(HEADERS) $(SRCS)
 	$(CXX) $(DEBUG) $^ -o $(BIN)_$@
 
-.SUFFIXES:
 
 .PHONY: clean all
 clean:
