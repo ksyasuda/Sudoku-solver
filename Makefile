@@ -3,8 +3,6 @@ CXX = g++
 CXXFLAGS = -std=c++1z -Wconversion -Wall -Werror -Wextra -pedantic -DNDEBUG -O3 
 
 DEBUG = -std=c++1z -Wconversion -Wall -Werror -Wextra -pedantic -DDEBUG -g3
-	
-all: solver debug
 
 BIN = solver
 
