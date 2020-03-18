@@ -19,6 +19,7 @@ class Board {
 public:
 	std::vector<std::vector<int>> board;
 	std::vector<std::vector<int>> output_board;
+	std::vector<std::vector<int>> board_copy;
 	const char* colors[11] = {RED, ORANGE, YELLOW, GREEN, BLUE, CYAN, PURPLE, BLACK,
 	WHITE, RESET };
 	int size;

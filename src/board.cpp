@@ -6,8 +6,10 @@
 Board::Board(int size_) {
     	size = size_;
 	board.resize(size_);
+	board_copy.resize(size_);
 	for(int i = 0; i < size_; ++i) {
 		board[i].resize(size_);
+		board_copy[i].resize(size_);
 	}
 }
 
@@ -192,52 +194,123 @@ void Board::printOutput() {
 		}
 		for(int j = 0; j < size; ++j) {
 			if(i >= 0 && i <=2 && j >= 0 && j <=2) {
-				if(j == 2) std::cout << colors[0] << "| " << colors[9] <<
-					output_board[i][j] << colors[0] << " |";
-				else std::cout << colors[0]  << "| " << colors[9] <<
-					output_board[i][j] << colors[0] << " ";
+				if(j == 2) {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[0] << "| " << colors[3] << output_board[i][j] << colors[0] << " |";
+					else
+						std::cout << colors[0] << "| " << colors[9] << output_board[i][j] << colors[0] << " |";	
+				}
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[0]  << "| " << colors[3] << output_board[i][j] << colors[0] << " ";
+					else {
+						std::cout << colors[0] << "| " << colors[9] << output_board[i][j] << colors[0] << " ";
+					}
+				}
 			} else if(i >= 0 && i <=2 && j >= 3 && j <=5) {	
-				if(j == 5) std::cout << colors[1] << "| " << colors[9] <<
-					output_board[i][j] << colors[1] << " |";
-				else std::cout << colors[1] << "| " << colors[9] <<  output_board[i][j] << colors[1] << " ";
+				if(j == 5) {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[1] << "| " << colors[3] << output_board[i][j] << colors[1] << " |";
+					else 
+						std::cout << colors[1] << "| " << colors[9] << output_board[i][j] << colors[1] << " |";
+				}
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[1] << "| " << colors[3] <<  output_board[i][j] << colors[1] << " ";
+					else 
+						std::cout << colors[1] << "| " << colors[9] << output_board[i][j] << colors[1] << " ";
+				}
 			} else if(i >= 0 && i <=2 && j <= 8) {
-				if(j == size-1) std::cout << colors[2] << "| " << colors[9] <<
-					output_board[i][j] << colors[2] << " |\n";
-				else std::cout << colors[2] << "| " << colors[9] <<
-					output_board[i][j] << colors[2] << " ";
+				if(j == size-1) {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[2] << "| " << colors[3] << output_board[i][j] << colors[2] << " |\n";
+					else 
+						std::cout << colors[2] << "| " << colors[9] << output_board[i][j] << colors[2] << " |\n";
+				}
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[2] << "| " << colors[3] << output_board[i][j] << colors[2] << " ";
+					else 
+						std::cout << colors[2] << "| " << colors[9] << output_board[i][j] << colors[2] << " ";
+				}
 			} else if(i >=3 && i <=5 && j >=0 && j<=2) {
-				if(j == 2) std::cout << colors[3] << "| " << colors[9] <<
-				   	output_board[i][j] << colors[3] << " |";
-				else std::cout << colors[3]  << "| " << colors[9] <<
-					output_board[i][j] << colors[3] << " ";
+				if(j == 2) 
+					if(board_copy[i][j] == 0)
+						std::cout << colors[3] << "| " << colors[3] << output_board[i][j] << colors[3] << " |";
+					else 
+						std::cout << colors[3] << "| " << colors[9] << output_board[i][j] << colors[3] << " |";
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[3]  << "| " << colors[3] << output_board[i][j] << colors[3] << " ";
+					else 
+						std::cout << colors[3] << "| " << colors[9] << output_board[i][j] << colors[3] << " ";
+				}
 			} else if(i >= 3 && i <=5 && j >=3 && j <= 5) {
-				if(j == 5) std::cout << colors[4] << "| " << colors[9] <<
-					output_board[i][j] << colors[4] << " |";
-				else std::cout << colors[4] << "| " << colors[9] <<
-					output_board[i][j] << colors[4] << " ";
+				if(j == 5) {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[4] << "| " << colors[3] << output_board[i][j] << colors[4] << " |";
+					else 
+						std::cout << colors[4] << "| " << colors[9] << output_board[i][j] << colors[4] << " |";
+				}
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[4] << "| " << colors[3] << output_board[i][j] << colors[4] << " ";
+					else 
+						std::cout << colors[4] << "| " << colors[9] << output_board[i][j] << colors[4] << " ";
+				}
 			} else if(i >=3 && i <=5 && j <= 8) {
 				if(j == 8) {
-					std::cout << colors[5] << "| " << colors[9] <<
-					output_board[i][j] << colors[5] << " |\n";
+					if(board_copy[i][j] == 0)
+						std::cout << colors[5] << "| " << colors[3] << output_board[i][j] << colors[5] << " |\n";
+					else 
+						std::cout << colors[5] << "| " << colors[9] << output_board[i][j] << colors[5] << " |\n";
 				}
-				else{
-					std::cout << colors[5] << "| " << colors[9] << output_board[i][j] << colors[5] << " ";
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[5] << "| " << colors[3] << output_board[i][j] << colors[5] << " ";
+					else 
+						std::cout << colors[5] << "| " << colors[9] << output_board[i][j] << colors[5] << " ";
 				}
 			} else if(i>=6 && j >=0 && j <= 2) {
-				if(j == 2) std::cout << colors[6] << "| " << colors[9] <<
-					output_board[i][j] << colors[6] << " |";
-				else std::cout << colors[6] << "| " << colors[9] <<
-					output_board[i][j] << colors[6] << " ";
+				if(j == 2) {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[6] << "| " << colors[3] << output_board[i][j] << colors[6] << " |";
+					else 
+						std::cout << colors[6] << "| " << colors[9] << output_board[i][j] << colors[6] << " |";
+				}
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[6] << "| " << colors[3] << output_board[i][j] << colors[6] << " ";
+					else 
+						std::cout << colors[6] << "| " << colors[9] << output_board[i][j] << colors[6] << " ";
+				}
 			} else if(i >=6 && j>=3 && j<=5) {
-				if(j == 5) std::cout << colors[7] << "| " << colors[9] <<
-					output_board[i][j] << colors[7] << " |";
-				else std::cout << colors[7] << "| " << colors[9] <<
-					output_board[i][j] << colors[7] << " ";
+				if(j == 5) {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[7] << "| " << colors[3] << output_board[i][j] << colors[7] << " |";
+					else 
+						std::cout << colors[7] << "| " << colors[9] << output_board[i][j] << colors[7] << " |";
+				}
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[7] << "| " << colors[3] << output_board[i][j] << colors[7] << " ";
+					else 
+						std::cout << colors[7] << "| " << colors[9] << output_board[i][j] << colors[7] << " ";
+				}
 			} else if(i >=6 && j >=6) {
-				if(j == 8) std::cout << colors[8] << "| " << colors[9] <<
-					output_board[i][j] << colors[8] << " |\n";
-				else std::cout << colors[8] << "| " << colors[9] <<
-					output_board[i][j] << colors[8] << " ";
+				if(j == 8) {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[8] << "| " << colors[3] << output_board[i][j] << colors[8] << " |\n";
+					else {
+						std::cout << colors[8] << "| " << colors[9] << output_board[i][j] << colors[8] << " |\n";
+					}
+				}
+				else {
+					if(board_copy[i][j] == 0)
+						std::cout << colors[8] << "| " << colors[3] << output_board[i][j] << colors[8] << " ";
+					else 
+						std::cout << colors[8] << "| " << colors[9] << output_board[i][j] << colors[8] << " ";
+				}
 			}
 		}
 		// std::cout << "\n";
@@ -274,6 +347,7 @@ void Board::readBoard(std::ifstream& is) {
 		for(int j = 0; j < size; ++j) {
 			is >> num;
 			board[i][j] = num;
+			board_copy[i][j] = num;
 			++count;
 		}
 	}
@@ -290,14 +364,14 @@ void Board::solve() {
 			if(board[i][j] == 0) {
 				for(int k = 1; k <= 9; k++) {
 					if(findMove(i, j, k)) {
-					board[i][j] = k;
+						board[i][j] = k;
 					#ifdef DEBUG
-					++count;
-					printBoard();
+						++count;
+						printBoard();
 					#endif
-					solve();
-					if(solved) return;
-					board[i][j] = 0;
+						solve();
+						if(solved) return;
+						board[i][j] = 0;
 					}
 				}
 			//* board not valid
