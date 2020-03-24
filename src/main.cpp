@@ -25,6 +25,7 @@ int main(int argc, char* argv[]) {
 	board.printBoard();
 	std::cout << board.colors[5] << "            Solved board\n";
 	board.solve();
+	board.copyBoard();
 	// board.printBoard();
 	board.printOutput();
 	return 0;

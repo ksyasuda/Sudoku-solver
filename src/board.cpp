@@ -175,6 +175,10 @@ void Board::printBoard() {
 }
 
 void Board::printOutput() {
+	if(output_board.empty()) {
+		std::cerr << "Could not find solution\n";
+		return;
+	}
 #ifdef DEBUG
 	std::cout << colors[6] << count << " numbers tried\n";
 #endif
